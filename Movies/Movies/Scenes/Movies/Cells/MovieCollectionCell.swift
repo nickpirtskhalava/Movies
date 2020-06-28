@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SDWebImage
 
 struct MovieCellViewModel {
-    var imageUrl: String
+    var imageUrl: URL?
     var movieName: String
 }
 
@@ -26,5 +27,6 @@ class MovieCollectionCell: UICollectionViewCell {
     
     func configure(with model: MovieCellViewModel) {
         labelMovie.text = model.movieName
+        imageViewPoster.sd_setImage(with: model.imageUrl, placeholderImage: nil)
     }
 }

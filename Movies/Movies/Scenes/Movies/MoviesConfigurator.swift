@@ -8,20 +8,20 @@
 
 import Foundation
 
-protocol MovieCollectionConfigurator {
-    func configure(for controller: MovieCollectionController)
+protocol MoviesConfigurator {
+    func configure(for controller: MoviesController)
 }
 
-class MovieCollectionConfiguratorImpl: MovieCollectionConfigurator {
+class MoviesConfiguratorImpl: MoviesConfigurator {
     
-    func configure(for controller: MovieCollectionController) {
+    func configure(for controller: MoviesController) {
         
         let apiClient = ApiClientImplementation(
             urlSessionConfiguration: URLSessionConfiguration.default,
             completionHandlerQueue: OperationQueue.main)
         let gateway = ApiMoviesGatewayImpl.init(apiClient: apiClient)
         let useCase = DisplayPopularMoviesUseCaseImpl.init(moviesGateway: gateway)
-        let presenter = MovieCollectionPresenterImpl.init(
+        let presenter = MoviesPresenterImpl.init(
             view: controller,
             useCase: useCase)
         controller.presenter = presenter

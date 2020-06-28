@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MovieCollectionController: UIViewController, MoviesView {
+class MoviesController: UIViewController, MoviesView {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
-    private let configurator = MovieCollectionConfiguratorImpl()
-    var presenter: MovieCollectionPresenter!
+    private let configurator = MoviesConfiguratorImpl()
+    var presenter: MoviesPresenter!
     
     
     override func viewDidLoad() {
@@ -36,11 +36,11 @@ class MovieCollectionController: UIViewController, MoviesView {
     }
 }
 
-extension MovieCollectionController: UICollectionViewDelegate {
+extension MoviesController: UICollectionViewDelegate {
     
 }
 
-extension MovieCollectionController: UICollectionViewDataSource {
+extension MoviesController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.numberOfMovies
     }
@@ -52,10 +52,10 @@ extension MovieCollectionController: UICollectionViewDataSource {
     }
 }
 
-extension MovieCollectionController: UICollectionViewDelegateFlowLayout {
+extension MoviesController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width/2, height: collectionView.frame.size.width/2)
+        return CGSize(width: collectionView.frame.size.width/2, height: collectionView.frame.size.height/3)
     }
 }
 

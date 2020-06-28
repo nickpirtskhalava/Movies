@@ -12,13 +12,13 @@ protocol MoviesView: class {
     func reloadData()
 }
 
-protocol MovieCollectionPresenter {
+protocol MoviesPresenter {
     var  numberOfMovies: Int { get }
     func viewDidLoad()
     func configure(cell: MovieCollectionCell, forRow row: Int)
 }
 
-class MovieCollectionPresenterImpl: MovieCollectionPresenter {
+class MoviesPresenterImpl: MoviesPresenter {
     
     fileprivate let popularMoviesUseCase: DisplayPopularMoviesUseCase
     fileprivate weak var view: MoviesView?

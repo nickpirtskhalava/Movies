@@ -28,8 +28,9 @@ struct Movie {
 extension Movie {
     
     var viewModel: MovieCellViewModel {
+        let path = "\(AppUrl.ImagePath)\(posterPath)"
         return MovieCellViewModel.init(
-            imageUrl: "\(AppUrl.ImagePath)\(posterPath)",
+            imageUrl: URL.init(string: path),
             movieName: originalTitle)
     }
 }
