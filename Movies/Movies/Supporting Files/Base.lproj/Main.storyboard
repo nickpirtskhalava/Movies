@@ -171,9 +171,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbn-OW-LiC">
                                         <rect key="frame" x="276" y="0.0" width="138" height="85"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5P-rq-AHN">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="85"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9z-AJ-MfR">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="85"/>
-                                                <state key="normal" title="Add To Favorites"/>
                                                 <connections>
                                                     <action selector="didTapAdd:" destination="tLf-4S-bio" eventType="touchUpInside" id="1r9-4A-GJF"/>
                                                 </connections>
@@ -181,6 +186,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="f5P-rq-AHN" secondAttribute="bottom" id="Ahu-QA-Coc"/>
+                                            <constraint firstItem="f5P-rq-AHN" firstAttribute="top" secondItem="Qbn-OW-LiC" secondAttribute="top" id="Jp7-3W-4nt"/>
+                                            <constraint firstAttribute="trailing" secondItem="f5P-rq-AHN" secondAttribute="trailing" id="P4n-o4-uOZ"/>
+                                            <constraint firstItem="f5P-rq-AHN" firstAttribute="leading" secondItem="Qbn-OW-LiC" secondAttribute="leading" id="Xc3-Db-pfa"/>
                                             <constraint firstAttribute="trailing" secondItem="q9z-AJ-MfR" secondAttribute="trailing" id="dJO-G3-vZS"/>
                                             <constraint firstItem="q9z-AJ-MfR" firstAttribute="top" secondItem="Qbn-OW-LiC" secondAttribute="top" id="gbe-j2-Zxl"/>
                                             <constraint firstItem="q9z-AJ-MfR" firstAttribute="leading" secondItem="Qbn-OW-LiC" secondAttribute="leading" id="jzA-P1-lGV"/>
@@ -237,8 +246,9 @@
                         <viewLayoutGuide key="safeArea" id="Tqs-1b-CFh"/>
                     </view>
                     <connections>
-                        <outlet property="buttonFavorite" destination="q9z-AJ-MfR" id="ORr-OV-WjX"/>
+                        <outlet property="buttonFavorite" destination="q9z-AJ-MfR" id="ief-HM-QZs"/>
                         <outlet property="imageViewPoster" destination="4j6-7h-6yI" id="TcW-NU-JpE"/>
+                        <outlet property="labelFavorite" destination="f5P-rq-AHN" id="cWW-Vj-cbW"/>
                         <outlet property="labelOriginalTitle" destination="x3J-Uo-0Oi" id="YNJ-Zs-f0X"/>
                         <outlet property="labelOverview" destination="C3e-oG-hva" id="6sq-j4-DOs"/>
                         <outlet property="labelRating" destination="qyT-EC-JGg" id="244-b3-0M8"/>

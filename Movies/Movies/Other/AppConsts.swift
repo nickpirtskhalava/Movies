@@ -11,8 +11,8 @@ import UIKit
 // MARK: enums
 
 enum FavoriteState: String {
-    case canAdd = "Add To Favorites"
-    case added  = "Movie added"
+    case canAdd = "Add to \n favorites"
+    case added  = "Movie already \n added"
 }
 
 extension FavoriteState {

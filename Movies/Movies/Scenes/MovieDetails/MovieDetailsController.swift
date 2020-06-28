@@ -17,6 +17,7 @@ class MovieDetailsController: UIViewController {
     @IBOutlet weak var labelOverview: UILabel!
     @IBOutlet weak var labelRating: UILabel!
     @IBOutlet weak var labelReleaseDate: UILabel!
+    @IBOutlet weak var labelFavorite: UILabel!
     @IBOutlet weak var buttonFavorite: UIButton!
     
     
@@ -70,8 +71,8 @@ extension MovieDetailsController: MovieDetailsView {
     }
     
     func display(state: FavoriteState) {
-        buttonFavorite.setTitle(state.rawValue, for: .normal)
-        buttonFavorite.setTitleColor(state.color, for: .normal)
+        labelFavorite.text = state.rawValue 
+        labelFavorite.textColor = state.color
         buttonFavorite.isUserInteractionEnabled = state == .canAdd
     }
 }
