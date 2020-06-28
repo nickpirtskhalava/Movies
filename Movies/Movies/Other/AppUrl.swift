@@ -25,6 +25,7 @@ struct AppUrl {
     
     private struct Method {
         static let topRated = "/top_rated"
+        static let popular = "/popular"
     }
     
     public struct Param {
@@ -44,7 +45,11 @@ struct AppUrl {
     private static let BaseUrl = Domains.prod
     public  static let ImagePath = Domains.image + "/t/p/original"
     
-    static var PopulaMovies: String {
+    static var TopRatedMovies: String {
         return BaseUrl + Routes.api + Method.topRated + Param.Key.apiKey + Api.key + Param.Key.language + Param.Value.language + Param.Key.page + Param.Value.page
+    }
+    
+    static var PopularMoviews: String {
+        return BaseUrl + Routes.api + Method.popular + Param.Key.apiKey + Api.key + Param.Key.language + Param.Value.language + Param.Key.page + Param.Value.page
     }
 }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-typealias FetchPopularMoviesEntityGatewayCompletionHandler = (_ books: Result<[Movie], Error>) -> Void
+typealias FetchMoviesEntityGatewayCompletionHandler = (_ books: Result<[Movie], Error>) -> Void
 
 protocol MoviesGateway {
-    func fetchPopularMovies(completionHandler: @escaping FetchPopularMoviesEntityGatewayCompletionHandler)
+    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler)
 }

@@ -20,7 +20,7 @@ class MoviesConfiguratorImpl: MoviesConfigurator {
             urlSessionConfiguration: URLSessionConfiguration.default,
             completionHandlerQueue: OperationQueue.main)
         let gateway = ApiMoviesGatewayImpl.init(apiClient: apiClient)
-        let useCase = DisplayPopularMoviesUseCaseImpl.init(moviesGateway: gateway)
+        let useCase = DisplayTopRatedMoviesUseCaseImpl.init(moviesGateway: gateway)
         let router = MoviesRouterImpl(moviesController: controller)
         let presenter = MoviesPresenterImpl.init(
             view: controller, router: router,

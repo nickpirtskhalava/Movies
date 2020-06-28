@@ -16,9 +16,8 @@ class ApiMoviesGatewayImpl: MoviesGateway {
         self.apiClient = apiClient
     }
     
-    func fetchPopularMovies(completionHandler: @escaping FetchPopularMoviesEntityGatewayCompletionHandler) {
-        let request = ApiPopularMoviesRequest()
-        apiClient.execute(request: request) { (result: Result<ApiResponse<IMDBApiResponse<[ApiMovie]>>, Error>) in
+    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
+        apiClient.execute(request: type.request) { (result: Result<ApiResponse<IMDBApiResponse<[ApiMovie]>>, Error>) in
             switch result {
             case let .success(response):
                 let movies = response.entity.results.map { $0.movie }

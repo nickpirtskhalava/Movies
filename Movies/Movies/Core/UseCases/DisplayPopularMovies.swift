@@ -1,5 +1,5 @@
 //
-//  DisplayPopularMovies.swift
+//  DisplayTopRatedMovies.swift
 //  Movies
 //
 //  Created by Nikoloz Phirtskhalava on 6/28/20.
@@ -8,21 +8,21 @@
 
 import Foundation
 
-typealias DisplayPopularMoviesUseCaseCompletionHandler = (_ movies: Result<[Movie], Error>) -> Void
+typealias DisplayTopRatedMoviesUseCaseCompletionHandler = (_ movies: Result<[Movie], Error>) -> Void
 
-protocol DisplayPopularMoviesUseCase {
-    func displayPopularMovies(completionHandler: @escaping DisplayPopularMoviesUseCaseCompletionHandler)
+protocol DisplayTopRatedMoviesUseCase {
+    func displayTopRatedMovies(for type: MovieType, completionHandler: @escaping DisplayTopRatedMoviesUseCaseCompletionHandler)
 }
 
-class DisplayPopularMoviesUseCaseImpl: DisplayPopularMoviesUseCase {
+class DisplayTopRatedMoviesUseCaseImpl: DisplayTopRatedMoviesUseCase {
     
     let moviesGateway: MoviesGateway
     init(moviesGateway: MoviesGateway) {
         self.moviesGateway = moviesGateway
     }
     
-    func displayPopularMovies(completionHandler: @escaping DisplayPopularMoviesUseCaseCompletionHandler) {
-        self.moviesGateway.fetchPopularMovies { (result) in
+    func displayTopRatedMovies(for type: MovieType, completionHandler: @escaping DisplayTopRatedMoviesUseCaseCompletionHandler) {
+        self.moviesGateway.fetchMovies(for: type) { (result) in
             completionHandler(result)
         }
     }

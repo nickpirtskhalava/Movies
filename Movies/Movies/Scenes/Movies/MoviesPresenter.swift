@@ -21,7 +21,7 @@ protocol MoviesPresenter {
 
 class MoviesPresenterImpl: MoviesPresenter {
     
-    fileprivate let popularMoviesUseCase: DisplayPopularMoviesUseCase
+    fileprivate let topRatedMoviesUseCase: DisplayTopRatedMoviesUseCase
     fileprivate weak var view: MoviesView?
     fileprivate var router: MoviesRouter
     fileprivate var dataSource: [Movie] = []
@@ -32,14 +32,14 @@ class MoviesPresenterImpl: MoviesPresenter {
     
     init(view: MoviesView?,
          router: MoviesRouter,
-         useCase: DisplayPopularMoviesUseCase) {
-        self.popularMoviesUseCase = useCase
+         useCase: DisplayTopRatedMoviesUseCase) {
+        self.topRatedMoviesUseCase = useCase
         self.router = router
         self.view = view
     }
     
     func viewDidLoad() {
-        popularMoviesUseCase.displayPopularMovies { (result) in
+        topRatedMoviesUseCase.displayTopRatedMovies(for: .popular) { (result) in
             switch result {
             case let .success(movies):
                 self.dataSource = movies
