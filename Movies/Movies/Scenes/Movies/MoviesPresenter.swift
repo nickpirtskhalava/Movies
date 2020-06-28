@@ -15,6 +15,7 @@ protocol MoviesView: class {
 protocol MoviesPresenter {
     var  numberOfMovies: Int { get }
     func viewDidLoad()
+    func didSelect(row: Int)
     func configure(cell: MovieCollectionCell, forRow row: Int)
 }
 
@@ -22,6 +23,7 @@ class MoviesPresenterImpl: MoviesPresenter {
     
     fileprivate let popularMoviesUseCase: DisplayPopularMoviesUseCase
     fileprivate weak var view: MoviesView?
+    fileprivate var router: MoviesRouter
     fileprivate var dataSource: [Movie] = []
     
     var numberOfMovies: Int {
@@ -29,8 +31,10 @@ class MoviesPresenterImpl: MoviesPresenter {
     }
     
     init(view: MoviesView?,
+         router: MoviesRouter,
          useCase: DisplayPopularMoviesUseCase) {
         self.popularMoviesUseCase = useCase
+        self.router = router
         self.view = view
     }
     
@@ -46,10 +50,20 @@ class MoviesPresenterImpl: MoviesPresenter {
             }
         }
     }
+}
+
+// MARK: TableView Datasource Delegate Handling
+
+extension MoviesPresenterImpl {
     
     func configure(cell: MovieCollectionCell, forRow row: Int) {
         let movie = dataSource[row]
         let model = movie.viewModel
         cell.configure(with: model)
+    }
+    
+    func didSelect(row: Int) {
+        let movie = dataSource[row]
+        router.presentDetailsView(for: movie)
     }
 }

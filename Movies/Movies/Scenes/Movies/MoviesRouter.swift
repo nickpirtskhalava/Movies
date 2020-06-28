@@ -9,9 +9,19 @@
 import Foundation
 
 protocol MoviesRouter {
-    
+    func presentDetailsView(for movie: Movie)
 }
 
 class MoviesRouterImpl: MoviesRouter {
     
+    fileprivate weak var controller: MoviesController?
+    init(moviesController: MoviesController) {
+           self.controller = moviesController
+       }
+    
+    func presentDetailsView(for movie: Movie) {
+        let configurator = MovieDetailsConfiguratorImpl.init(movie: movie)
+        let vc = MovieDetailsController.storyBoardInstance(with: configurator)
+        controller?.navigationController?.pushViewController(vc, animated: true)
+    }
 }

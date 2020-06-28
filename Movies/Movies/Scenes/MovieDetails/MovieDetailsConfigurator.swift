@@ -15,8 +15,15 @@ protocol MovieDetailsConfigurator {
 }
 
 class MovieDetailsConfiguratorImpl: MovieDetailsConfigurator {
+    
+    let movie: Movie
+    init(movie: Movie) {
+        self.movie = movie
+    }
 
     func configure(for controller: MovieDetailsController) {
-        
+        let presenter = MovieDetailsPresenterImpl.init(
+            view: controller, movie: movie)
+        controller.presenter = presenter
     }
 }

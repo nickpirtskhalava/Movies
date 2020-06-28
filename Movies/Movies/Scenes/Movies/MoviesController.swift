@@ -38,6 +38,9 @@ class MoviesController: UIViewController, MoviesView {
 
 extension MoviesController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelect(row: indexPath.row)
+    }
 }
 
 extension MoviesController: UICollectionViewDataSource {
