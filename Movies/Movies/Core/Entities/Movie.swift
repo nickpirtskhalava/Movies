@@ -23,3 +23,13 @@ struct Movie {
     let voteAverage: Double
     let overview, releaseDate: String
 }
+
+
+extension Movie {
+    
+    var viewModel: MovieCellViewModel {
+        return MovieCellViewModel.init(
+            imageUrl: "\(AppUrl.ImagePath)\(posterPath)",
+            movieName: originalTitle)
+    }
+}

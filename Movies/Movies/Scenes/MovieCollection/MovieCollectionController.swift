@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieCollectionController: UIViewController, MovieCollectionView {
+class MovieCollectionController: UIViewController, MoviesView {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -30,6 +30,10 @@ class MovieCollectionController: UIViewController, MovieCollectionView {
             nibName: "MovieCollectionCell", bundle: nil),
             forCellWithReuseIdentifier: "MovieCollectionCell")
     }
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 extension MovieCollectionController: UICollectionViewDelegate {
@@ -38,11 +42,13 @@ extension MovieCollectionController: UICollectionViewDelegate {
 
 extension MovieCollectionController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter.numberOfMovies
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath) as! MovieCollectionCell
+        presenter.configure(cell: cell, forRow: indexPath.row)
+        return cell
     }
 }
 

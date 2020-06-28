@@ -9,7 +9,7 @@
 import UIKit
 
 struct MovieCellViewModel {
-    var imageUrl: URL
+    var imageUrl: String
     var movieName: String
 }
 

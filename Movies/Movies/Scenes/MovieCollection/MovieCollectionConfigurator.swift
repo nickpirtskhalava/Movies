@@ -21,7 +21,9 @@ class MovieCollectionConfiguratorImpl: MovieCollectionConfigurator {
             completionHandlerQueue: OperationQueue.main)
         let gateway = ApiMoviesGatewayImpl.init(apiClient: apiClient)
         let useCase = DisplayPopularMoviesUseCaseImpl.init(moviesGateway: gateway)
-        let presenter = MovieCollectionPresenterImpl.init(useCase: useCase)
+        let presenter = MovieCollectionPresenterImpl.init(
+            view: controller,
+            useCase: useCase)
         controller.presenter = presenter
     }
 }

@@ -8,21 +8,30 @@
 
 import Foundation
 
-protocol MovieCollectionView: class {
-    
+protocol MoviesView: class {
+    func reloadData()
 }
 
 protocol MovieCollectionPresenter {
+    var  numberOfMovies: Int { get }
     func viewDidLoad()
+    func configure(cell: MovieCollectionCell, forRow row: Int)
 }
 
 class MovieCollectionPresenterImpl: MovieCollectionPresenter {
     
     fileprivate let popularMoviesUseCase: DisplayPopularMoviesUseCase
+    fileprivate weak var view: MoviesView?
     fileprivate var dataSource: [Movie] = []
     
-    init(useCase: DisplayPopularMoviesUseCase) {
+    var numberOfMovies: Int {
+        return dataSource.count
+    }
+    
+    init(view: MoviesView?,
+         useCase: DisplayPopularMoviesUseCase) {
         self.popularMoviesUseCase = useCase
+        self.view = view
     }
     
     func viewDidLoad() {
@@ -30,10 +39,17 @@ class MovieCollectionPresenterImpl: MovieCollectionPresenter {
             switch result {
             case let .success(movies):
                 self.dataSource = movies
+                self.view?.reloadData()
                 break
             case let .failure(error):
                 break
             }
         }
+    }
+    
+    func configure(cell: MovieCollectionCell, forRow row: Int) {
+        let movie = dataSource[row]
+        let model = movie.viewModel
+        cell.configure(with: model)
     }
 }

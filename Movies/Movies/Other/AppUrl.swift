@@ -42,7 +42,7 @@ struct AppUrl {
     }
     
     private static let BaseUrl = Domains.prod
-    private static let ImagePath = Domains.image + "/t/p/original"
+    public  static let ImagePath = Domains.image + "/t/p/original"
     
     static var PopulaMovies: String {
         return BaseUrl + Routes.api + Method.topRated + Param.Key.apiKey + Api.key + Param.Key.language + Param.Value.language + Param.Key.page + Param.Value.page
