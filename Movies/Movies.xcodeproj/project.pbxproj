@@ -47,6 +47,7 @@
 		D1779BF524A8E115003B052E /* CacheMoviesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1779BF424A8E115003B052E /* CacheMoviesGateway.swift */; };
 		D1779BF724A8E3CE003B052E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1779BF624A8E3CE003B052E /* CoreDataStack.swift */; };
 		D1779BF924A8E576003B052E /* AddMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1779BF824A8E576003B052E /* AddMovie.swift */; };
+		D1779BFC24A8F09A003B052E /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1779BFB24A8F09A003B052E /* FilterController.swift */; };
 		E019630C26FE05F26294BD34 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB77997BDE658C8B119783D3 /* Pods_Movies.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		D1779BF424A8E115003B052E /* CacheMoviesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheMoviesGateway.swift; sourceTree = "<group>"; };
 		D1779BF624A8E3CE003B052E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D1779BF824A8E576003B052E /* AddMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovie.swift; sourceTree = "<group>"; };
+		D1779BFB24A8F09A003B052E /* FilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 		D1779BB124A784B3003B052E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				D1779BFA24A8F07D003B052E /* Filter */,
 				D1779BD624A899A6003B052E /* Cells */,
 				D1779B7B24A774DE003B052E /* MoviesController.swift */,
 				D1779BEB24A8D50B003B052E /* MoviesController+Filter.swift */,
@@ -398,6 +401,14 @@
 				D1779BF424A8E115003B052E /* CacheMoviesGateway.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		D1779BFA24A8F07D003B052E /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D1779BFB24A8F09A003B052E /* FilterController.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		D80AF7DC7A2AED2FCB4555BF /* Frameworks */ = {
@@ -659,6 +670,7 @@
 				D1779B7824A774DE003B052E /* AppDelegate.swift in Sources */,
 				D1779BE824A8B951003B052E /* AppConsts.swift in Sources */,
 				D1779BC324A7E41B003B052E /* AppUrl.swift in Sources */,
+				D1779BFC24A8F09A003B052E /* FilterController.swift in Sources */,
 				D1779BF724A8E3CE003B052E /* CoreDataStack.swift in Sources */,
 				D1779B8224A774DE003B052E /* Movies.xcdatamodeld in Sources */,
 				D1779BB724A7855E003B052E /* MoviesRouter.swift in Sources */,

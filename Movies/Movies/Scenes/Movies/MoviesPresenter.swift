@@ -14,10 +14,11 @@ protocol MoviesView: class {
 }
 
 protocol MoviesPresenter {
-    var  numberOfMovies: Int { get }
+    var numberOfMovies: Int { get }
+    var category: MovieCategory { get }
     func viewDidLoad()
     func didSelect(row: Int)
-    func didTapFilter(type: MovieType)
+    func didTapFilter(cateogry: MovieCategory)
     func configure(cell: MovieCollectionCell, forRow row: Int)
 }
 
@@ -27,9 +28,14 @@ class MoviesPresenterImpl: MoviesPresenter {
     fileprivate weak var view: MoviesView?
     fileprivate var router: MoviesRouter
     fileprivate var dataSource: [Movie] = []
+    fileprivate var selectedCategory: MovieCategory = .popular
     
     var numberOfMovies: Int {
         return dataSource.count
+    }
+    
+    var category: MovieCategory {
+        return selectedCategory
     }
     
     init(view: MoviesView?,
@@ -44,8 +50,8 @@ class MoviesPresenterImpl: MoviesPresenter {
         fetchMoviesBy(type: .popular)
     }
     
-    func fetchMoviesBy(type: MovieType) {
-        useCase.displayTopRatedMovies(for: type) { [weak self] (result) in
+    func fetchMoviesBy(type: MovieCategory) {
+        useCase.displayMovies(for: type) { [weak self] (result) in
             switch result {
             case let .success(movies):
                 self?.dataSource = movies
@@ -80,7 +86,8 @@ extension MoviesPresenterImpl {
 
 extension MoviesPresenterImpl {
     
-    func didTapFilter(type: MovieType) {
-       fetchMoviesBy(type: type)
+    func didTapFilter(cateogry: MovieCategory) {
+        selectedCategory = cateogry
+        fetchMoviesBy(type: cateogry)
     }
 }

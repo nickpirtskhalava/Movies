@@ -20,30 +20,15 @@ extension MoviesController {
     }
     
     @objc func didTapFilter() {
-        let sheet = UIAlertController.init(
-                title: AppConsts.Filter.title,
-                message: AppConsts.Filter.message,
-                preferredStyle: .actionSheet)
-        sheet.addAction(
-            UIAlertAction.init(
-                title: AppConsts.AlertAction.popular,
-                style: .default, handler: { [weak self] (action) in
-                    self?.presenter.didTapFilter(type: .popular)
-        }))
-        sheet.addAction(UIAlertAction.init(
-            title: AppConsts.AlertAction.topRated,
-            style: .default, handler: { [weak self] (action) in
-                    self?.presenter.didTapFilter(type: .topRated)
-        }))
-        sheet.addAction(UIAlertAction.init(
-            title: AppConsts.AlertAction.favorite,
-            style: .default, handler: { (action) in
-                self.presenter.didTapFilter(type: .favorite)
-        }))
-        
-        sheet.addAction(UIAlertAction.init(
-            title: AppConsts.AlertAction.cancel,
-            style: .cancel, handler: nil))
-        self.present(sheet, animated: true, completion:  nil)
+        let vc = FilterController.storyBoardInstance(with: presenter.category)
+            vc.delegate = self
+        self.present(vc, animated: true, completion:  nil)
+    }
+}
+
+extension MoviesController: FilterControllerDelegate {
+    
+    func filterControllerDidSelect(category: MovieCategory) {
+        presenter.didTapFilter(cateogry: category)
     }
 }

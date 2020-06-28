@@ -20,7 +20,7 @@ class ApiMoviesGatewayImpl: ApiMoviesGateway {
         self.apiClient = apiClient
     }
     
-    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
+    func fetchMovies(for type: MovieCategory, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
         apiClient.execute(request: type.request) { (result: Result<ApiResponse<IMDBApiResponse<[ApiMovie]>>, Error>) in
             switch result {
             case let .success(response):

@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum MovieType: String {
-    case topRated = "top_rated"
-    case popular = "popular"
-    case favorite = "favorite"
+enum MovieCategory: Int {
+    case popular = 0
+    case topRated 
+    case favorite
 }
 
-extension MovieType {
+extension MovieCategory {
     var request: ApiRequest {
         switch self {
         case .popular:

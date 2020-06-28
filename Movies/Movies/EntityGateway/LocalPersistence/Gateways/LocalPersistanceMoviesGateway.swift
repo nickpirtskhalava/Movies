@@ -34,7 +34,7 @@ class CoreDataMoviesGateway: LocalPersistenceMoviesGateway {
         }
     }
     
-    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
+    func fetchMovies(for type: MovieCategory, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
         if let coreDataMovies = try? viewContext.allEntities(withType: CoreDataMovie.self) {
             let movies = coreDataMovies.map { $0.movie }
             completionHandler(.success(movies))

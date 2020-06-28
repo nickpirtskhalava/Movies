@@ -20,7 +20,7 @@ class CacheMoviesGateway: MoviesGateway {
         self.localPersistenceMoviesGateway = localPersistenceMoviesGateway
     }
     
-    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
+    func fetchMovies(for type: MovieCategory, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler) {
         switch type {
         case .popular, .topRated:
             apiMoviesGateway.fetchMovies(

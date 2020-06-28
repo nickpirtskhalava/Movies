@@ -11,5 +11,5 @@ import Foundation
 typealias FetchMoviesEntityGatewayCompletionHandler = (_ books: Result<[Movie], Error>) -> Void
 
 protocol MoviesGateway {
-    func fetchMovies(for type: MovieType, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler)
+    func fetchMovies(for type: MovieCategory, completionHandler: @escaping FetchMoviesEntityGatewayCompletionHandler)
 }
