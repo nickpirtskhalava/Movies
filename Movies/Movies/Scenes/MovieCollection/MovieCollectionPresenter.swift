@@ -18,16 +18,22 @@ protocol MovieCollectionPresenter {
 
 class MovieCollectionPresenterImpl: MovieCollectionPresenter {
     
-    private let popularMoviesUseCase: DisplayPopularMoviesUseCase
+    fileprivate let popularMoviesUseCase: DisplayPopularMoviesUseCase
+    fileprivate var dataSource: [Movie] = []
     
     init(useCase: DisplayPopularMoviesUseCase) {
         self.popularMoviesUseCase = useCase
     }
     
     func viewDidLoad() {
-        
         popularMoviesUseCase.displayPopularMovies { (result) in
-            
+            switch result {
+            case let .success(movies):
+                self.dataSource = movies
+                break
+            case let .failure(error):
+                break
+            }
         }
     }
 }

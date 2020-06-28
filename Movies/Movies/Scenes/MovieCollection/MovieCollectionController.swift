@@ -10,6 +10,8 @@ import UIKit
 
 class MovieCollectionController: UIViewController, MovieCollectionView {
 
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     private let configurator = MovieCollectionConfiguratorImpl()
     var presenter: MovieCollectionPresenter!
     
@@ -20,6 +22,34 @@ class MovieCollectionController: UIViewController, MovieCollectionView {
         
         configurator.configure(for: self)
         presenter.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(UINib.init(
+            nibName: "MovieCollectionCell", bundle: nil),
+            forCellWithReuseIdentifier: "MovieCollectionCell")
+    }
+}
+
+extension MovieCollectionController: UICollectionViewDelegate {
+    
+}
+
+extension MovieCollectionController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath)
+    }
+}
+
+extension MovieCollectionController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width/2, height: collectionView.frame.size.width/2)
     }
 }
 
