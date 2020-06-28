@@ -27,6 +27,6 @@ class MovieCollectionCell: UICollectionViewCell {
     
     func configure(with model: MovieCellViewModel) {
         labelMovie.text = model.movieName
-        imageViewPoster.sd_setImage(with: model.imageUrl, placeholderImage: nil)
+        imageViewPoster.sd_setImage(with: model.imageUrl, placeholderImage: UIImage.init(named: "placeholder"))
     }
 }
