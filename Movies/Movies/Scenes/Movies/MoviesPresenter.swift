@@ -14,8 +14,8 @@ protocol MoviesView: class {
 }
 
 protocol MoviesPresenter {
-    var numberOfMovies: Int { get }
-    var category: MovieCategory { get }
+    var  numberOfMovies: Int { get }
+    var  category: MovieCategory { get }
     func viewDidLoad()
     func didSelect(row: Int)
     func didTapFilter(cateogry: MovieCategory)
@@ -77,10 +77,9 @@ extension MoviesPresenterImpl {
     
     func didSelect(row: Int) {
         let movie = dataSource[row]
-        router.presentDetailsView(for: movie)
+        self.router.presentDetailsView(for: movie)
     }
 }
-
 
 // MARK: Filter
 

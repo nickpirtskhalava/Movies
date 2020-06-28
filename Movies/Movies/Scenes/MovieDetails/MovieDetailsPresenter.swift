@@ -15,6 +15,7 @@ protocol MovieDetailsView: class {
     func display(movieOverView: String)
     func display(movieRating: Double)
     func display(movieReleaseDate: String)
+    func display(state: FavoriteState)
 }
 
 protocol MovieDetailsPresenter {
@@ -25,19 +26,24 @@ protocol MovieDetailsPresenter {
 class MovieDetailsPresenterImpl: MovieDetailsPresenter {
     
     private weak var view: MovieDetailsView?
-    private let useCase: AddMovieUseCase
-    private var movie: Movie
+    private let addMovie: AddMovieUseCase
+    private let coreDataGateway: CoreDataMoviesGateway
+    private let movie: Movie
     
     init(view: MovieDetailsView?,
-         useCase: AddMovieUseCase,
+         addMovie: AddMovieUseCase,
+         gateway: CoreDataMoviesGateway,
          movie: Movie) {
         
         self.view = view
         self.movie = movie
-        self.useCase = useCase
+        self.addMovie = addMovie
+        self.coreDataGateway = gateway
     }
     
     func viewDidLoad() {
+        configureFavoriteButtonState()
+        
         let url = URL.init(string: "\(AppUrl.ImagePath)\(movie.posterPath)")
         view?.display(movieTitle: movie.title)
         view?.display(movieImageUrl: url)
@@ -48,6 +54,22 @@ class MovieDetailsPresenterImpl: MovieDetailsPresenter {
     }
     
     func didTapAddMovie() {
-        useCase.add(movie: movie)
+        addMovie.add(movie: movie)
+    }
+}
+extension MovieDetailsPresenterImpl {
+    
+    func configureFavoriteButtonState() {
+        coreDataGateway.fetchMovies(for: .favorite) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case let .success(movies):
+                let movieAlreadyInDatabase = movies.contains { $0.id == self.movie.id }
+                self.view?.display(state: movieAlreadyInDatabase ? .added : .canAdd)
+                break
+            case .failure:
+                break
+            }
+        }
     }
 }

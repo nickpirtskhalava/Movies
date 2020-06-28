@@ -236,6 +236,7 @@
                         <viewLayoutGuide key="safeArea" id="Tqs-1b-CFh"/>
                     </view>
                     <connections>
+                        <outlet property="buttonFavorite" destination="q9z-AJ-MfR" id="ORr-OV-WjX"/>
                         <outlet property="imageViewPoster" destination="4j6-7h-6yI" id="TcW-NU-JpE"/>
                         <outlet property="labelOriginalTitle" destination="x3J-Uo-0Oi" id="YNJ-Zs-f0X"/>
                         <outlet property="labelOverview" destination="C3e-oG-hva" id="6sq-j4-DOs"/>

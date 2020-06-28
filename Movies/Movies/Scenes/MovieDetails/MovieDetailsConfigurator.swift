@@ -26,7 +26,9 @@ class MovieDetailsConfiguratorImpl: MovieDetailsConfigurator {
         let gateway = CoreDataMoviesGateway.init(viewContext: viewContext)
         let useCase = AddMovieUseCaseImpl.init(gateway: gateway)
         let presenter = MovieDetailsPresenterImpl.init(
-            view: controller, useCase: useCase, movie: movie)
+            view: controller,
+            addMovie: useCase,
+            gateway: gateway, movie: movie)
         controller.presenter = presenter
     }
 }
