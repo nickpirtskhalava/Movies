@@ -8,15 +8,18 @@
 
 import UIKit
 
-class MovieCollectionController: UIViewController, MoviesCollectionView {
+class MovieCollectionController: UIViewController, MovieCollectionView {
 
-    private let configurator = MoviesCollectionConfiguratorImpl()
-    var presenter: MoviesCollectionPresenter!
+    private let configurator = MovieCollectionConfiguratorImpl()
+    var presenter: MovieCollectionPresenter!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        configurator.configure(for: self)
+        presenter.viewDidLoad()
     }
 }
 

@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol MoviesCollectionRouter {
+protocol MovieCollectionRouter {
     
 }
 
-class MoviesCollectionRouterImpl: MoviesCollectionRouter {
+class MoviesCollectionRouterImpl: MovieCollectionRouter {
     
 }

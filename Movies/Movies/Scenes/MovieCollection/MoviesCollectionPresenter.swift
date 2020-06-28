@@ -8,11 +8,15 @@
 
 import Foundation
 
-protocol MoviesCollectionPresenter {
+protocol MoviesCollectionView: class {
     
 }
 
-class MoviesCollectionPresenterImpl: MoviesCollectionPresenter {
+protocol MovieCollectionPresenter {
+    
+}
+
+class MoviesCollectionPresenterImpl: MovieCollectionPresenter {
     
     
 }
