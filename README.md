@@ -18,7 +18,7 @@ Each scene presentation logics is divided into 4 separate layers.
 
 ### Application Details
 
-Application starts with fetching popular movies using imdb public api. in case of success data fetch, it shows movies with the help of UICollectionView (Grid). when data fails user is informed about the error. There is a filter button on the right side of the navigation bar. tapping a filter bar item user is redirected to the filter scene where you can choose one from *popular*, *top rated* and *favorite* categories.
+Application starts with fetching popular movies using imdb public api. in case of success data fetch, it shows movies with the help of UICollectionView (Grid). when data fails user is informed about the error. There is a filter button on the right side of the navigation bar. tapping a filter bar item user is redirected to the filter scene where you can choose one from *popular*, *top rated* and *favorite* categories. if user has no movies in favorites he looks at the empty screen till he adds one from the movide details page which contains movie *poster*, *title*, *original title*, *overview*, *rating*, *release Date* and *favorite button*. favorite button adds browsing movie details to the CoreData. if the movie is already in database you are not allowed to add it any more and are informed about the movie. After user adds movie to local storage he can find it in favorites category. 
 
 ### Run Requirements
 
