@@ -16,6 +16,10 @@ Each scene presentation logics is divided into 4 separate layers.
 * __Use Case__ contains the application / business logic for a specific use case in application.
 * __Gateway__  contains actual implementation of the protocols defined in the Application Logic layer.
 
+### Application Details
+
+Application starts with fetching popular movies using imdb public api. in case of success data fetch, it shows movies with the help of UICollectionView (Grid). when data fails user is informed about the error. There is a filter button on the right side of the navigation bar. tapping a filter bar item user is redirected to the filter scene where you can choose one from *popular*, *top rated* and *favorite* categories.
+
 ### Run Requirements
 
 * Xcode 10.2.1
