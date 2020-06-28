@@ -254,6 +254,7 @@
 			children = (
 				D1779BDE24A8ADAD003B052E /* MovieDetails */,
 				D1779BB124A784B3003B052E /* Movies */,
+				D1779BFA24A8F07D003B052E /* Filter */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -288,7 +289,6 @@
 		D1779BB124A784B3003B052E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				D1779BFA24A8F07D003B052E /* Filter */,
 				D1779BD624A899A6003B052E /* Cells */,
 				D1779B7B24A774DE003B052E /* MoviesController.swift */,
 				D1779BEB24A8D50B003B052E /* MoviesController+Filter.swift */,

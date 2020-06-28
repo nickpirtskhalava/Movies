@@ -55,6 +55,7 @@ class MovieDetailsPresenterImpl: MovieDetailsPresenter {
     
     func didTapAddMovie() {
         addMovie.add(movie: movie)
+        view?.display(state: .added)
     }
 }
 extension MovieDetailsPresenterImpl {

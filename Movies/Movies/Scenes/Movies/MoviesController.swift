@@ -27,8 +27,8 @@ class MoviesController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.register(UINib.init(
-            nibName: "MovieCollectionCell", bundle: nil),
-            forCellWithReuseIdentifier: "MovieCollectionCell")
+            nibName: AppConsts.UI.Cell.MovieCollection.id, bundle: nil),
+            forCellWithReuseIdentifier: AppConsts.UI.Cell.MovieCollection.id)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +66,7 @@ extension MoviesController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionCell", for: indexPath) as! MovieCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConsts.UI.Cell.MovieCollection.id, for: indexPath) as! MovieCollectionCell
         presenter.configure(cell: cell, forRow: indexPath.row)
         return cell
     }

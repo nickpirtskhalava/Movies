@@ -9,22 +9,6 @@
 import UIKit
 import SDWebImage
 
-enum FavoriteState: String {
-    case canAdd = "Add To Favorites"
-    case added  = "Movie added"
-}
-
-extension FavoriteState {
-    var color: UIColor {
-        switch self {
-        case .canAdd:
-            return #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        case .added:
-            return #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        }
-    }
-}
-
 class MovieDetailsController: UIViewController {
     
     @IBOutlet weak var labelTitle: UILabel!
@@ -40,8 +24,8 @@ class MovieDetailsController: UIViewController {
     private var configurator: MovieDetailsConfigurator!
     
     static func storyBoardInstance(with configurator: MovieDetailsConfigurator) -> MovieDetailsController {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "MovieDetailsController") as! MovieDetailsController
+        let storyboard = UIStoryboard.init(name: AppConsts.UI.StoryBoard.main, bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: AppConsts.UI.StoryBoard.Id.movieDetails) as! MovieDetailsController
             vc.configurator = configurator
         return vc
     }

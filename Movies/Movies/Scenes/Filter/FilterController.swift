@@ -20,8 +20,8 @@ class FilterController: UITableViewController {
     weak var delegate: FilterControllerDelegate?
     
     static func storyBoardInstance(with selectedCategory: MovieCategory) -> FilterController {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "FilterController") as! FilterController
+        let storyboard = UIStoryboard.init(name: AppConsts.UI.StoryBoard.main, bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: AppConsts.UI.StoryBoard.Id.filter) as! FilterController
             vc.category = selectedCategory
         return vc
     }
