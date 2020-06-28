@@ -25,7 +25,7 @@ class MovieDetailsController: UIViewController {
     
     static func storyBoardInstance(with configurator: MovieDetailsConfigurator) -> MovieDetailsController {
         let storyboard = UIStoryboard.init(name: AppConsts.UI.StoryBoard.main, bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: AppConsts.UI.StoryBoard.Id.movieDetails) as! MovieDetailsController
+        let vc = storyboard.instantiateViewController(withIdentifier: AppConsts.UI.StoryBoard.Id.movieDetails) as! MovieDetailsController
             vc.configurator = configurator
         return vc
     }
