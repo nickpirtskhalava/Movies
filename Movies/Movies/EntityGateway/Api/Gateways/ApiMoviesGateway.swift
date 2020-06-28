@@ -9,7 +9,11 @@
 import Foundation
 
 
-class ApiMoviesGatewayImpl: MoviesGateway {
+protocol ApiMoviesGateway: MoviesGateway {
+    
+}
+
+class ApiMoviesGatewayImpl: ApiMoviesGateway {
     
     let apiClient: ApiClient
     init(apiClient: ApiClient) {

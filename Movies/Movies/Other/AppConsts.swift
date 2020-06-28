@@ -11,6 +11,7 @@ import Foundation
 enum MovieType: String {
     case topRated = "top_rated"
     case popular = "popular"
+    case favorite = "favorite"
 }
 
 extension MovieType {
@@ -26,5 +27,15 @@ extension MovieType {
 
 struct AppConsts {
 
+    struct Filter {
+        static let title = "Filter"
+        static let message = ""
+    }
     
+    struct AlertAction {
+        static let popular = "Popular"
+        static let topRated = "Top Rated"
+        static let favorite = "Favorite"
+        static let cancel = "Cancel"
+    }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreData
 
 
 protocol MovieDetailsConfigurator {
@@ -22,8 +22,11 @@ class MovieDetailsConfiguratorImpl: MovieDetailsConfigurator {
     }
 
     func configure(for controller: MovieDetailsController) {
+        let viewContext = CoreDataStackImplementation.sharedInstance.persistentContainer.viewContext
+        let gateway = CoreDataMoviesGateway.init(viewContext: viewContext)
+        let useCase = AddMovieUseCaseImpl.init(gateway: gateway)
         let presenter = MovieDetailsPresenterImpl.init(
-            view: controller, movie: movie)
+            view: controller, useCase: useCase, movie: movie)
         controller.presenter = presenter
     }
 }

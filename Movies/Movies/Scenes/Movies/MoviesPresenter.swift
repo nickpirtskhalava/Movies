@@ -10,18 +10,20 @@ import Foundation
 
 protocol MoviesView: class {
     func reloadData()
+    func showError(message: String)
 }
 
 protocol MoviesPresenter {
     var  numberOfMovies: Int { get }
     func viewDidLoad()
     func didSelect(row: Int)
+    func didTapFilter(type: MovieType)
     func configure(cell: MovieCollectionCell, forRow row: Int)
 }
 
 class MoviesPresenterImpl: MoviesPresenter {
     
-    fileprivate let topRatedMoviesUseCase: DisplayTopRatedMoviesUseCase
+    fileprivate let useCase: DisplayMoviesUseCase
     fileprivate weak var view: MoviesView?
     fileprivate var router: MoviesRouter
     fileprivate var dataSource: [Movie] = []
@@ -32,20 +34,25 @@ class MoviesPresenterImpl: MoviesPresenter {
     
     init(view: MoviesView?,
          router: MoviesRouter,
-         useCase: DisplayTopRatedMoviesUseCase) {
-        self.topRatedMoviesUseCase = useCase
+         useCase: DisplayMoviesUseCase) {
+        self.useCase = useCase
         self.router = router
         self.view = view
     }
     
     func viewDidLoad() {
-        topRatedMoviesUseCase.displayTopRatedMovies(for: .popular) { (result) in
+        fetchMoviesBy(type: .popular)
+    }
+    
+    func fetchMoviesBy(type: MovieType) {
+        useCase.displayTopRatedMovies(for: type) { [weak self] (result) in
             switch result {
             case let .success(movies):
-                self.dataSource = movies
-                self.view?.reloadData()
+                self?.dataSource = movies
+                self?.view?.reloadData()
                 break
             case let .failure(error):
+                self?.view?.showError(message: error.localizedDescription)
                 break
             }
         }
@@ -65,5 +72,15 @@ extension MoviesPresenterImpl {
     func didSelect(row: Int) {
         let movie = dataSource[row]
         router.presentDetailsView(for: movie)
+    }
+}
+
+
+// MARK: Filter
+
+extension MoviesPresenterImpl {
+    
+    func didTapFilter(type: MovieType) {
+       fetchMoviesBy(type: type)
     }
 }

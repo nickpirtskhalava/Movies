@@ -35,6 +35,10 @@ class MovieDetailsController: UIViewController {
         configurator.configure(for: self)
         presenter.viewDidLoad()
     }
+    
+    @IBAction func didTapAdd(_ sender: UIButton) {
+        presenter.didTapAddMovie()
+    }
 }
 
 

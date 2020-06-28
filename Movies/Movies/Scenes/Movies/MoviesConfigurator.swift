@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol MoviesConfigurator {
     func configure(for controller: MoviesController)
@@ -19,8 +20,11 @@ class MoviesConfiguratorImpl: MoviesConfigurator {
         let apiClient = ApiClientImplementation(
             urlSessionConfiguration: URLSessionConfiguration.default,
             completionHandlerQueue: OperationQueue.main)
-        let gateway = ApiMoviesGatewayImpl.init(apiClient: apiClient)
-        let useCase = DisplayTopRatedMoviesUseCaseImpl.init(moviesGateway: gateway)
+        let viewContext = CoreDataStackImplementation.sharedInstance.persistentContainer.viewContext
+        let apiGateway = ApiMoviesGatewayImpl.init(apiClient: apiClient)
+        let localPersistanceGateway = CoreDataMoviesGateway.init(viewContext: viewContext)
+        let gateway = CacheMoviesGateway.init(apiMoviesGateway: apiGateway, localPersistenceMoviesGateway: localPersistanceGateway)
+        let useCase = DisplayMoviesUseCaseImpl.init(moviesGateway: gateway)
         let router = MoviesRouterImpl(moviesController: controller)
         let presenter = MoviesPresenterImpl.init(
             view: controller, router: router,

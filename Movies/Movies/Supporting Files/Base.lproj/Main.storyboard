@@ -76,14 +76,19 @@
                                         <rect key="frame" x="276" y="0.0" width="138" height="85"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9z-AJ-MfR">
-                                                <rect key="frame" x="54" y="27.5" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="85"/>
                                                 <state key="normal" title="Add"/>
+                                                <connections>
+                                                    <action selector="didTapAdd:" destination="tLf-4S-bio" eventType="touchUpInside" id="1r9-4A-GJF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="q9z-AJ-MfR" firstAttribute="centerY" secondItem="Qbn-OW-LiC" secondAttribute="centerY" id="Gef-Ru-1zT"/>
-                                            <constraint firstItem="q9z-AJ-MfR" firstAttribute="centerX" secondItem="Qbn-OW-LiC" secondAttribute="centerX" id="WEm-yf-nFa"/>
+                                            <constraint firstAttribute="trailing" secondItem="q9z-AJ-MfR" secondAttribute="trailing" id="dJO-G3-vZS"/>
+                                            <constraint firstItem="q9z-AJ-MfR" firstAttribute="top" secondItem="Qbn-OW-LiC" secondAttribute="top" id="gbe-j2-Zxl"/>
+                                            <constraint firstItem="q9z-AJ-MfR" firstAttribute="leading" secondItem="Qbn-OW-LiC" secondAttribute="leading" id="jzA-P1-lGV"/>
+                                            <constraint firstAttribute="bottom" secondItem="q9z-AJ-MfR" secondAttribute="bottom" id="zYT-Bw-7w3"/>
                                         </constraints>
                                     </view>
                                 </subviews>

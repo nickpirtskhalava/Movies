@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoviesController: UIViewController, MoviesView {
+class MoviesController: UIViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -31,8 +31,25 @@ class MoviesController: UIViewController, MoviesView {
             forCellWithReuseIdentifier: "MovieCollectionCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       addBarFilter()
+    }
+}
+
+extension MoviesController: MoviesView {
+    
     func reloadData() {
         collectionView.reloadData()
+    }
+    
+    func showError(message: String) {
+        let alert = UIAlertController.init(
+            title: "Error",
+            message: message,
+            preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
