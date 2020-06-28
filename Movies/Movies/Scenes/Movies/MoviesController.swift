@@ -23,9 +23,6 @@ class MoviesController: UIViewController {
         configurator.configure(for: self)
         presenter.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         collectionView.register(UINib.init(
             nibName: AppConsts.UI.Cell.MovieCollection.id, bundle: nil),
             forCellWithReuseIdentifier: AppConsts.UI.Cell.MovieCollection.id)

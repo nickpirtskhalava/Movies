@@ -46,28 +46,13 @@ class MovieDetailsController: UIViewController {
 
 extension MovieDetailsController: MovieDetailsView {
     
-    func display(movieTitle: String) {
-        self.labelTitle.text = movieTitle
-    }
-    
-    func display(movieImageUrl: URL?) {
-        imageViewPoster.sd_setImage(with: movieImageUrl, completed: nil)
-    }
-    
-    func display(movieOriginalTitle: String) {
-        labelOriginalTitle.text = movieOriginalTitle
-    }
-    
-    func display(movieOverView: String) {
-        labelOverview.text = movieOverView
-    }
-    
-    func display(movieRating: Double) {
-        labelRating.text = "Rating: \n \(movieRating)"
-    }
-    
-    func display(movieReleaseDate: String) {
-        labelReleaseDate.text = "Release Date: \n \(movieReleaseDate)" 
+    func display(data: MovieDetailsViewModel) {
+        labelTitle.text = data.movieTitle
+        labelOriginalTitle.text = data.movieOriginalTitle
+        labelOverview.text = data.movieOverView
+        labelRating.text = "Rating: \n \(data.movieRating)"
+        labelReleaseDate.text = "Release Date: \n \(data.movieReleaseDate)"
+        imageViewPoster.sd_setImage(with: data.movieImageUrl, completed: nil)
     }
     
     func display(state: FavoriteState) {

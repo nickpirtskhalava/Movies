@@ -8,13 +8,17 @@
 
 import Foundation
 
+struct MovieDetailsViewModel {
+    var movieTitle: String
+    var movieImageUrl: URL?
+    var movieOriginalTitle: String
+    var movieOverView: String
+    var movieRating: Double
+    var movieReleaseDate: String
+}
+
 protocol MovieDetailsView: class {
-    func display(movieTitle: String)
-    func display(movieImageUrl: URL?)
-    func display(movieOriginalTitle: String)
-    func display(movieOverView: String)
-    func display(movieRating: Double)
-    func display(movieReleaseDate: String)
+    func display(data: MovieDetailsViewModel)
     func display(state: FavoriteState)
 }
 
@@ -43,14 +47,7 @@ class MovieDetailsPresenterImpl: MovieDetailsPresenter {
     
     func viewDidLoad() {
         configureFavoriteButtonState()
-        
-        let url = URL.init(string: "\(AppUrl.ImagePath)\(movie.posterPath)")
-        view?.display(movieTitle: movie.title)
-        view?.display(movieImageUrl: url)
-        view?.display(movieOriginalTitle: movie.originalTitle)
-        view?.display(movieOverView: movie.overview)
-        view?.display(movieRating: movie.voteAverage)
-        view?.display(movieReleaseDate: movie.releaseDate)
+        view?.display(data: movie.detailsViewModel)
     }
     
     func didTapAddMovie() {
